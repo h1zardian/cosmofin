@@ -26,3 +26,7 @@ dnf5 group install cosmic-desktop
 #### Example for enabling a System Unit File
 
 #systemctl enable podman.socket
+
+systemctl disable gdm && \
+systemctl disable sddm && \
+systemctl enable cosmic-greeter
