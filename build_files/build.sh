@@ -14,7 +14,26 @@ set -ouex pipefail
 
 dnf5 remove gnome-\*
 
-dnf5 group install cosmic-desktop
+# Base Packages
+PACKAGES=(
+    bibata-cursor-themes
+    papirus-icon-theme
+    mpv
+    keyd
+    gnome-keyring-pam
+    NetworkManager-tui
+    NetworkManager-openvpn
+    xdg-user-dirs
+)
+
+
+
+dnf5 group install -y cosmic-desktop
+
+dnf install -y --allowerasing \
+    --setopt=install_weak_deps=False \
+    -x bluefin-readymade-config \
+    "${PACKAGES[@]}"
 
 # Use a COPR Example:
 #
